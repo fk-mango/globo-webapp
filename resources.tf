@@ -51,12 +51,12 @@ resource "aws_instance" "main" {
 
 }
 
-resource "null_resource" "webapp" {
+resource "terraform_data" "webapp" {
 
-  triggers = {
-    webapp_server_count = length(aws_instance.main.*.id)
-    web_server_names    = join(",", aws_instance.main.*.id)
-  }
+  triggers_replace = [
+    length(aws_instance.main.*.id),
+    join(",", aws_instance.main.*.id)
+  ]
 
   provisioner "file" {
     content = templatefile("./templates/application.config.tpl", {
