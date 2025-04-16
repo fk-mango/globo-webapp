@@ -26,7 +26,7 @@ locals {
 ##################################################################################
 
 resource "aws_instance" "main" {
-  count         = length(var.public_subnets)
+  count = length(var.public_subnets)
 
   ami           = nonsensitive(data.aws_ssm_parameter.amzn2_linux.value)
   instance_type = var.instance_type
