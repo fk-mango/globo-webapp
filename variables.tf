@@ -61,3 +61,13 @@ variable "playbook_repository" {
   type        = string
   description = "(Required) URL of the Ansible playbook repository."
 }
+
+variable "ec2_role_name" {
+  type        = string
+  description = "(Required) Role Name for the EC2 Instance."
+}
+
+variable "api_key_secret_id" {
+  type        = string
+  description = "(Required) Secret ID for the API key in AWS Secrets Manager."
+}
